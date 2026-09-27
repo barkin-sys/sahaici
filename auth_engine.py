@@ -10,7 +10,7 @@ import hashlib
 from typing import Optional, Dict
 
 CONFIG_FILE = os.path.join(os.path.dirname(__file__), "auth_config.json")
-DEFAULT_PASSWORD = os.environ.get("APP_PASSWORD", "1234")
+DEFAULT_PASSWORD = os.environ.get("APP_PASSWORD", "227546")
 SESSION_EXPIRE_SECONDS = 30 * 24 * 3600  # 30 gün geçerli
 
 
