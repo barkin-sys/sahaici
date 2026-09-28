@@ -1,0 +1,3416 @@
+/* ==========================================================================
+   SAHA İÇİ - MAÇKOLİK & OFSAYT TEMASI (Modern, Kompakt, Hızlı & Kullanışlı)
+   ========================================================================== */
+
+:root {
+  /* Renk Paleti - Maçkolik & Ofsayt Koyu Spor Teması */
+  --bg-main: #0b1018;
+  --bg-card: #121924;
+  --bg-card-hover: #192333;
+  --bg-card-sub: #17202e;
+  --border-color: #1f2a3c;
+  --border-light: #28374d;
+  
+  --primary: #00c365;        /* Maçkolik Canlı Yeşili */
+  --primary-hover: #00a857;
+  --primary-subtle: rgba(0, 195, 101, 0.12);
+  
+  --red: #f43f5e;            /* Canlı Maç Kırmızısı */
+  --red-subtle: rgba(244, 63, 94, 0.14);
+  
+  --yellow: #f59e0b;         /* Oran / Dikkat Sarısı */
+  --yellow-subtle: rgba(245, 158, 11, 0.14);
+
+  --blue: #3b82f6;           /* İstatistik & Taktik Mavisi */
+  --blue-subtle: rgba(59, 130, 246, 0.14);
+
+  --purple: #8b5cf6;
+  
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --transition-fast: all 0.15s ease;
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  line-height: 1.45;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: #253347;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #33445c;
+}
+
+/* ==========================================================================
+   NAVBAR (ÜST MENÜ)
+   ========================================================================== */
+.navbar {
+  background: #0f1521;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.65rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-icon {
+  width: 36px;
+  height: 36px;
+  background: var(--primary);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  color: #000;
+  font-weight: 800;
+}
+
+.brand-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #fff;
+}
+
+.badge-pro {
+  background: var(--yellow);
+  color: #000;
+  font-size: 0.62rem;
+  font-weight: 900;
+  padding: 1px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+}
+
+.brand-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.live-status-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: var(--primary-subtle);
+  border: 1px solid rgba(0, 195, 101, 0.3);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.pulse-dot, .live-dot-pulse {
+  width: 7px;
+  height: 7px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+  0% { transform: scale(0.9); opacity: 1; box-shadow: 0 0 0 0 rgba(0, 195, 101, 0.7); }
+  70% { transform: scale(1.1); opacity: 0.8; box-shadow: 0 0 0 6px rgba(0, 195, 101, 0); }
+  100% { transform: scale(0.9); opacity: 1; box-shadow: 0 0 0 0 rgba(0, 195, 101, 0); }
+}
+
+.nav-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.btn-icon {
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-fast);
+  font-size: 0.85rem;
+}
+
+.btn-icon:hover {
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   TAB NAVIGATION (MAÇKOLİK STİLİ MENÜ)
+   ========================================================================== */
+.tab-bar-container {
+  background: #0d131d;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tab-bar {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+}
+
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.75rem 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 3px solid transparent;
+  transition: var(--transition-fast);
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.tab-btn.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  background: rgba(0, 195, 101, 0.04);
+}
+
+.badge-ai {
+  background: var(--primary);
+  color: #000;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 999px;
+}
+
+.badge-value {
+  background: var(--blue);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 999px;
+}
+
+/* ==========================================================================
+   MAIN CONTAINER & CONTROLS
+   ========================================================================== */
+.main-container {
+  max-width: 1400px;
+  margin: 1rem auto;
+  padding: 0 1.25rem;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Kontrol Paneli (Tarih, Arama, Filtreler) */
+.control-panel {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: var(--bg-card);
+  padding: 0.65rem 0.9rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  margin-bottom: 0.9rem;
+}
+
+.date-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.btn-date {
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: var(--transition-fast);
+}
+
+.btn-date:hover {
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+.btn-date.active-date {
+  background: var(--primary);
+  color: #000;
+  border-color: var(--primary);
+  font-weight: 700;
+}
+
+.date-input {
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.78rem;
+  padding: 0.38rem 0.65rem;
+  border-radius: var(--radius-sm);
+  outline: none;
+  cursor: pointer;
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.search-box {
+  flex: 1;
+  min-width: 220px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-box i {
+  position: absolute;
+  left: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.search-box input {
+  width: 100%;
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.82rem;
+  padding: 0.42rem 0.75rem 0.42rem 2.2rem;
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.search-box input:focus {
+  border-color: var(--primary);
+}
+
+.status-filters {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.filter-chip {
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.38rem 0.7rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: var(--transition-fast);
+}
+
+.filter-chip:hover {
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+.filter-chip.active {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+.chip-live.active {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.live-indicator {
+  width: 6px;
+  height: 6px;
+  background-color: var(--red);
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulse-red 1.3s infinite;
+}
+
+@keyframes pulse-red {
+  0% { transform: scale(0.9); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.5; }
+  100% { transform: scale(0.9); opacity: 1; }
+}
+
+/* ==========================================================================
+   LİG ŞERİDİ (YATAY SCROLL)
+   ========================================================================== */
+.leagues-scroll-wrapper {
+  margin-bottom: 0.9rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+
+.leagues-container {
+  display: flex;
+  gap: 0.45rem;
+  white-space: nowrap;
+}
+
+.league-pill {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: var(--transition-fast);
+}
+
+.league-pill:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: var(--border-light);
+}
+
+.league-pill.active {
+  background: var(--primary-subtle);
+  border-color: var(--primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+/* Bölüm Başlığı */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding: 0 0.25rem;
+}
+
+.section-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.section-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.date-badge {
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-xs);
+}
+
+.refresh-indicator {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   CANLI & BİTEN MAÇLAR TICKER BANDI (SHOWCASE)
+   ========================================================================== */
+.live-finished-showcase {
+  background: #111722;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.showcase-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.showcase-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.showcase-title h3 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.showcase-subtitle {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  display: none;
+}
+@media (min-width: 768px) {
+  .showcase-subtitle { display: inline-block; }
+}
+
+.showcase-badges {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.showcase-pill {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.showcase-pill.pill-live {
+  background: var(--red-subtle);
+  color: var(--red);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+.showcase-pill.pill-finished {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--text-secondary);
+}
+
+.showcase-cards-container {
+  display: flex;
+  gap: 0.6rem;
+  overflow-x: auto;
+  padding-bottom: 0.35rem;
+}
+
+.showcase-card {
+  flex: 0 0 240px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.showcase-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-light);
+  transform: translateY(-1px);
+}
+
+.showcase-card.is-live {
+  border-left: 3px solid var(--red);
+}
+
+.showcase-card.is-finished {
+  border-left: 3px solid var(--primary);
+}
+
+.showcase-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.35rem;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.showcase-league-name {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.showcase-card-matchup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+}
+
+.showcase-team {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.showcase-team.away {
+  justify-content: flex-end;
+}
+
+.showcase-team-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 80px;
+}
+
+.showcase-score {
+  font-size: 1rem;
+  font-weight: 800;
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--radius-xs);
+  background: var(--bg-card-sub);
+  white-space: nowrap;
+}
+
+.showcase-score.score-live {
+  color: var(--red);
+  background: var(--red-subtle);
+}
+
+.showcase-score.score-finished {
+  color: var(--primary);
+}
+
+.showcase-card-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 0.3rem;
+  margin-top: 0.2rem;
+}
+
+/* ==========================================================================
+   MAÇKOLİK & OFSAYT STİLİ MAÇ SATIRLARI (KOMPAKT FİKSTÜR DÜZENİ)
+   ========================================================================== */
+.matches-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.mackolik-row {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  transition: var(--transition-fast);
+  cursor: pointer;
+  position: relative;
+}
+
+.mackolik-row:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-light);
+}
+
+/* Canlı Maç Satırı Vurgusu */
+.mackolik-row.is-live {
+  border-left: 4px solid var(--red);
+  background: rgba(244, 63, 94, 0.04);
+}
+
+.mackolik-row.is-finished {
+  border-left: 4px solid #334155;
+}
+
+.mackolik-row.is-pre {
+  border-left: 4px solid #1e293b;
+}
+
+/* Satırın Ana Tıklanabilir Sol/Orta Kısmı */
+.row-left-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+/* Durum / Saat / Dakika Sütunu */
+.row-status-col {
+  flex: 0 0 52px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.76rem;
+  font-weight: 700;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  padding-right: 0.6rem;
+}
+
+.row-status-col.live {
+  color: var(--red);
+  display: flex;
+  flex-direction: row;
+  gap: 0.3rem;
+  align-items: center;
+}
+
+.row-status-col.finished {
+  color: var(--text-muted);
+}
+
+.row-ms-tag {
+  background: rgba(148, 163, 184, 0.15);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.row-status-col.pre {
+  color: var(--blue);
+}
+
+.row-time {
+  font-family: monospace;
+  font-size: 0.82rem;
+}
+
+/* Takımlar ve Skor Ortası */
+.row-teams-matchup {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.row-team {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 0;
+}
+
+.row-team.row-home {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.row-team.row-away {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.row-team-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.team-winner .row-team-title {
+  color: #fff;
+  font-weight: 700;
+}
+
+.row-crest {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.row-fallback-icon {
+  font-size: 1rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* Skor Sütunu */
+.row-score-col {
+  flex: 0 0 68px;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-xs);
+  background: var(--bg-card-sub);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.row-score-col.score-live {
+  background: var(--red-subtle);
+  color: var(--red);
+  border: 1px solid rgba(244, 63, 94, 0.25);
+}
+
+.row-score-col.score-finished {
+  color: #38bdf8;
+}
+
+.row-score-col.score-pre {
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.score-sep {
+  opacity: 0.6;
+  font-size: 0.8rem;
+}
+
+/* Sağ Araçlar (Mini istatistik & Butonlar) */
+.row-right-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.row-mini-stats {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-xs);
+}
+
+@media (min-width: 900px) {
+  .row-mini-stats { display: flex; }
+}
+
+.row-league-tag {
+  display: none;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+  .row-league-tag { display: block; }
+}
+
+.row-btn-group {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.btn-row-analyze, .btn-row-ask {
+  border: 1px solid var(--border-color);
+  font-family: inherit;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: var(--transition-fast);
+}
+
+.btn-row-analyze {
+  background: rgba(59, 130, 246, 0.12);
+  color: #60a5fa;
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.btn-row-analyze:hover {
+  background: #2563eb;
+  color: #fff;
+  border-color: #2563eb;
+}
+
+.btn-row-ask {
+  background: var(--bg-card-sub);
+  color: var(--text-secondary);
+}
+
+.btn-row-ask:hover {
+  background: var(--primary-subtle);
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* ==========================================================================
+   KUPONLAR & BAŞARI TAKİBİ
+   ========================================================================== */
+.stats-banner-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.stats-banner-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.stats-banner-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.stats-banner-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.stats-banner-badge {
+  background: var(--primary-subtle);
+  color: var(--primary);
+  border: 1px solid rgba(0, 195, 101, 0.3);
+  font-size: 0.85rem;
+  font-weight: 800;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-sm);
+}
+
+.stats-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.6rem;
+}
+
+.kpi-card {
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  padding: 0.6rem;
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.kpi-num {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.kpi-lbl {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* Kupon Araç Çubuğu */
+.coupon-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  background: var(--bg-card);
+  padding: 0.65rem 0.9rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  margin-bottom: 0.9rem;
+}
+
+.coupon-date-selector {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+}
+
+.coupon-quick-day-selector {
+  display: flex;
+  gap: 0.3rem;
+  background: var(--bg-card-sub);
+  padding: 2px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.day-toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: var(--transition-fast);
+}
+
+.day-toggle-btn:hover {
+  color: #fff;
+}
+
+.day-toggle-btn.active {
+  background: var(--primary);
+  color: #000;
+}
+
+.coupon-session-selector, .coupon-type-pills {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.session-tab-btn, .coupon-type-btn {
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.session-tab-btn:hover, .coupon-type-btn:hover {
+  background: var(--border-color);
+  color: var(--text-primary);
+}
+
+.session-tab-btn.active {
+  background: var(--blue-subtle);
+  border-color: var(--blue);
+  color: #fff;
+  font-weight: 700;
+}
+
+.coupon-type-btn.active {
+  background: var(--primary-subtle);
+  border-color: var(--primary);
+  color: #fff;
+  font-weight: 700;
+}
+
+.pill-rec {
+  background: var(--primary);
+  color: #000;
+  font-size: 0.62rem;
+  padding: 1px 4px;
+  border-radius: 2px;
+  margin-left: 0.2rem;
+}
+
+/* ==========================================================================
+   KUPON FİŞİ GÖRÜNÜMÜ (BİLYONER & MAÇKOLİK İDDAA FİŞİ)
+   ========================================================================== */
+.coupon-display-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.coupon-slip-card {
+  width: 100%;
+  max-width: 820px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+/* Seans Bilgi Şeridi */
+.slip-session-ribbon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 1rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.session-ribbon-day {
+  background: linear-gradient(90deg, #78350f, #92400e);
+  color: #fef3c7;
+}
+
+.session-ribbon-night {
+  background: linear-gradient(90deg, #1e1b4b, #2e1065);
+  color: #e0e7ff;
+}
+
+/* Durum Bildirim Çubuğu */
+.slip-status-bar {
+  padding: 0.6rem 1rem;
+  font-size: 0.84rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.slip-status-bar.status-won {
+  background: #065f46;
+  color: #a7f3d0;
+  border-bottom: 2px solid var(--primary);
+}
+
+.slip-status-bar.status-lost {
+  background: #881337;
+  color: #fecdd3;
+  border-bottom: 2px solid var(--red);
+}
+
+.slip-status-bar.status-pending {
+  background: #1e293b;
+  color: #cbd5e1;
+  border-bottom: 2px solid var(--blue);
+}
+
+/* Kupon Üst Başlığı & Oran Kutusu */
+.slip-header-banner {
+  background: #0e1522;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+@media (max-width: 640px) {
+  .slip-header-banner { flex-direction: column; align-items: flex-start; }
+}
+
+.slip-title-meta h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.slip-badge-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-xs);
+}
+
+.badge-emerald { background: var(--primary-subtle); color: var(--primary); border: 1px solid var(--primary); }
+.badge-blue { background: var(--blue-subtle); color: var(--blue); border: 1px solid var(--blue); }
+.badge-yellow { background: var(--yellow-subtle); color: var(--yellow); border: 1px solid var(--yellow); }
+
+.bilyoner-verified-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: rgba(0, 195, 101, 0.1);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-xs);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.slip-odds-box {
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-sm);
+  text-align: right;
+  min-width: 140px;
+}
+
+.slip-odds-label {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.slip-odds-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--primary);
+  font-family: monospace;
+}
+
+.slip-conf-badge {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  margin-top: 0.15rem;
+}
+
+/* Taktik Serdar Kupon Yorumu */
+.slip-pal-commentary {
+  background: rgba(0, 195, 101, 0.04);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.slip-pal-avatar {
+  width: 32px;
+  height: 32px;
+  background: var(--primary);
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.slip-pal-text {
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: var(--text-primary);
+}
+
+/* Seçimler Listesi (Seçilen Maçlar) */
+.slip-selections-list {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.slip-item-card {
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.9rem;
+  transition: var(--transition-fast);
+}
+
+.slip-item-card:hover {
+  border-color: var(--border-light);
+  background: #192434;
+}
+
+.slip-item-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.slip-item-card.clickable-coupon-match {
+  cursor: pointer;
+}
+
+.slip-item-card.clickable-coupon-match:hover {
+  border-color: var(--blue);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.slip-item-teams {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.view-match-link {
+  font-size: 0.7rem;
+  color: #60a5fa;
+  font-weight: 600;
+  background: rgba(59, 130, 246, 0.12);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-xs);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  opacity: 0.85;
+}
+
+.slip-item-card:hover .view-match-link {
+  opacity: 1;
+  background: rgba(59, 130, 246, 0.25);
+}
+
+.slip-item-pick-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pick-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.market-pill {
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-xs);
+  color: var(--text-secondary);
+}
+
+.pick-name {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--yellow);
+}
+
+.pick-right {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.bilyoner-odds-pill {
+  background: #0f172a;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  font-family: monospace;
+  font-size: 0.86rem;
+  font-weight: 800;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.bilyoner-tag {
+  background: var(--primary);
+  color: #000;
+  font-size: 0.6rem;
+  font-weight: 900;
+  padding: 1px 3px;
+  border-radius: 2px;
+}
+
+.pick-prob-pill {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.slip-item-note {
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  margin-top: 0.45rem;
+  padding-top: 0.35rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.05);
+}
+
+.slip-item-result-badge {
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-xs);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.result-won {
+  background: var(--primary-subtle);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.result-lost {
+  background: var(--red-subtle);
+  color: var(--red);
+  border: 1px solid var(--red);
+}
+
+.result-pending {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--text-secondary);
+}
+
+/* Kupon Alt Barı & Kazanç Hesaplayıcı */
+.slip-footer {
+  background: #0c121d;
+  border-top: 1px solid var(--border-color);
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.stake-calc-box {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.stake-input {
+  width: 75px;
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.3rem;
+  border-radius: var(--radius-xs);
+  outline: none;
+}
+
+.payout-box {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.payout-amount {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: var(--primary);
+  font-family: monospace;
+}
+
+.slip-footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-bilyoner-action {
+  background: var(--primary);
+  color: #000;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-xs);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: var(--transition-fast);
+}
+
+.btn-bilyoner-action:hover {
+  background: var(--primary-hover);
+}
+
+/* ==========================================================================
+   SOHBET (FUTBOL ARKADAŞI SERDAR)
+   ========================================================================== */
+.chat-hub-container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  min-height: 600px;
+}
+
+@media (max-width: 860px) {
+  .chat-hub-container { grid-template-columns: 1fr; }
+}
+
+.chat-sidebar {
+  border-right: 1px solid var(--border-color);
+  padding-right: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.pal-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem;
+  background: var(--bg-card-sub);
+  border-radius: var(--radius-sm);
+}
+
+.pal-avatar {
+  width: 36px;
+  height: 36px;
+  background: var(--primary);
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  position: relative;
+}
+
+.online-indicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border: 2px solid #000;
+  border-radius: 50%;
+}
+
+.pal-meta h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.pal-meta p {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.chat-select {
+  width: 100%;
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.82rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: var(--radius-sm);
+  outline: none;
+}
+
+.quick-questions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.quick-questions h4 {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.quick-btn {
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.76rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: var(--radius-sm);
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.quick-btn:hover {
+  background: var(--border-color);
+  color: #fff;
+}
+
+.chat-main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-height: 520px;
+}
+
+.chat-bubble {
+  display: flex;
+  gap: 0.6rem;
+  max-width: 85%;
+}
+
+.chat-bubble.user-bubble {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.bubble-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-card-sub);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.pal-bubble .bubble-avatar {
+  background: var(--primary);
+  color: #000;
+}
+
+.bubble-content {
+  background: var(--bg-card-sub);
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.user-bubble .bubble-content {
+  background: #1d4ed8;
+  color: #fff;
+}
+
+.chat-input-bar {
+  display: flex;
+  gap: 0.4rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.chat-input-bar input {
+  flex: 1;
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.85rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: var(--radius-sm);
+  outline: none;
+}
+
+.chat-input-bar input:focus {
+  border-color: var(--primary);
+}
+
+.btn-send, .btn-speech {
+  background: var(--primary);
+  color: #000;
+  border: none;
+  font-weight: 700;
+  padding: 0 1rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-send:hover {
+  background: var(--primary-hover);
+}
+
+.btn-speech {
+  background: var(--bg-card-sub);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+/* ==========================================================================
+   PUAN DURUMU (STANDINGS)
+   ========================================================================== */
+.standings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.standings-table-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow-x: auto;
+}
+
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+.standings-table th {
+  background: #0f1520;
+  color: var(--text-muted);
+  font-weight: 600;
+  padding: 0.65rem 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.standings-table td {
+  padding: 0.55rem 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.standings-table tr:hover {
+  background: var(--bg-card-hover);
+}
+
+.standings-table td:nth-child(2) {
+  text-align: left;
+  font-weight: 600;
+}
+
+.team-td-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.team-td-logo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.rank-badge {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  line-height: 22px;
+  border-radius: var(--radius-xs);
+  font-size: 0.75rem;
+  font-weight: 800;
+  background: var(--bg-card-sub);
+  color: var(--text-secondary);
+}
+
+.rank-badge.rank-cl {
+  background: rgba(0, 195, 101, 0.15);
+  color: var(--primary);
+  border: 1px solid rgba(0, 195, 101, 0.4);
+}
+
+.rank-badge.rank-rel {
+  background: rgba(244, 63, 94, 0.15);
+  color: var(--red);
+  border: 1px solid rgba(244, 63, 94, 0.4);
+}
+
+
+/* ==========================================================================
+   ANALİZ MODALI
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal-card {
+  background: #111724;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  width: 100%;
+  max-width: 780px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.modal-card.modal-sm {
+  max-width: 480px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: var(--text-secondary);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  z-index: 10;
+  transition: var(--transition-fast);
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.modal-header-banner {
+  background: #0d131d;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.modal-league-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.6rem;
+}
+
+.modal-teams-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.modal-team {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.modal-team-crest {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.modal-team h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.modal-score-box {
+  min-width: 100px;
+}
+
+.modal-score {
+  font-size: 1.7rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+.modal-status-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-top: 0.15rem;
+}
+
+.modal-venue {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.modal-body-scroll {
+  padding: 1rem 1.25rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ==========================================================================
+   CANLI MAÇ MERKEZİ & ANLIK TAKTİK BÖLÜMÜ
+   ========================================================================== */
+.live-inplay-section {
+  background: #0f1622;
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem;
+  box-shadow: 0 0 20px rgba(244, 63, 94, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.live-inplay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.live-inplay-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.live-inplay-title h4 {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.2px;
+}
+
+.live-clock-badge {
+  background: var(--red);
+  color: #fff;
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-xs);
+  letter-spacing: 0.5px;
+}
+
+/* Canlı İstatistik Çubukları Kartı */
+.live-stats-bars-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xs);
+  padding: 0.75rem;
+}
+
+.live-stat-bar-group {
+  margin-bottom: 0.75rem;
+}
+
+.stat-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.stat-bar-labels #liveHomePoss {
+  color: var(--primary);
+}
+
+.stat-bar-labels #liveAwayPoss {
+  color: var(--blue);
+}
+
+.stat-name {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.live-stats-mini-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 0.6rem;
+}
+
+@media (max-width: 580px) {
+  .live-stats-mini-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+.live-stat-box {
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  padding: 0.45rem;
+  border-radius: var(--radius-xs);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.live-stat-num {
+  font-size: 1rem;
+  font-weight: 800;
+  font-family: monospace;
+}
+
+.live-stat-lbl {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* Canlı Tahminler & Metrikler Grid */
+.inplay-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+}
+
+@media (max-width: 680px) {
+  .inplay-metrics-grid { grid-template-columns: 1fr; }
+}
+
+.inplay-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xs);
+  padding: 0.7rem;
+}
+
+.inplay-card-title {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* 1X2 Canlı Oranları */
+.inplay-1x2-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+}
+
+.inplay-prob-pill {
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.3rem;
+  border-radius: var(--radius-xs);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.inplay-prob-pill .lbl {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.inplay-prob-pill .pct {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--primary);
+  font-family: monospace;
+}
+
+/* Sıradaki Gol */
+.next-goal-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+}
+
+.next-goal-pill {
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.3rem;
+  border-radius: var(--radius-xs);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.next-goal-pill .lbl {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.next-goal-pill strong {
+  font-size: 0.92rem;
+  font-family: monospace;
+}
+
+/* Canlı Korner Projeksiyonu */
+.corner-proj-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.proj-badge {
+  background: var(--primary-subtle);
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  font-size: 0.84rem;
+  font-weight: 800;
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--radius-xs);
+  text-align: center;
+}
+
+.proj-sub {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Canlı Gol Barajı */
+.inplay-dynamic-goals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem;
+}
+
+.dynamic-goal-pill {
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.5rem;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+}
+
+.dynamic-goal-pill strong {
+  font-size: 0.9rem;
+  font-family: monospace;
+}
+
+/* Serdar'ın Yorumu Kartı */
+.pal-commentary-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem;
+}
+
+.pal-commentary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.pal-commentary-author {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.avatar-ring {
+  width: 28px;
+  height: 28px;
+  background: var(--primary);
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+.pal-commentary-author h4 {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.pal-commentary-author small {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.pal-commentary-tools {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.btn-tool {
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: var(--transition-fast);
+}
+
+.btn-tool:hover {
+  background: var(--border-color);
+  color: #fff;
+}
+
+.btn-primary-tool {
+  background: var(--primary);
+  color: #000;
+  border: none;
+  font-family: inherit;
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+}
+
+.pal-commentary-text {
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+  white-space: pre-line;
+}
+
+/* Olasılık ve İstatistik Barları */
+.section-subtitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.prob-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.74rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.stacked-bar {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--bg-card-sub);
+}
+
+.bar-segment.bar-home { background: var(--primary); }
+.bar-segment.bar-draw { background: var(--yellow); }
+.bar-segment.bar-away { background: var(--blue); }
+
+.stats-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+@media (max-width: 640px) {
+  .stats-mini-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.stat-mini-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 0.55rem;
+  border-radius: var(--radius-xs);
+  text-align: center;
+}
+
+.stat-val {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.stat-lbl {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.stat-sub {
+  font-size: 0.66rem;
+  color: var(--text-secondary);
+  margin-top: 0.15rem;
+}
+
+/* Boxscore & Canlı Maç Tablosu */
+.boxscore-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+}
+
+.boxscore-header-teams {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 0.5rem;
+}
+
+.boxscore-stat-row {
+  margin-bottom: 0.5rem;
+}
+
+.boxscore-stat-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.76rem;
+  margin-bottom: 0.2rem;
+}
+
+.boxscore-stat-name {
+  color: var(--text-muted);
+}
+
+.dual-progress-bar {
+  display: flex;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--bg-card-sub);
+}
+
+.dual-bar-home { background: var(--primary); }
+.dual-bar-away { background: var(--blue); }
+
+/* Form (Son 5 Maç) */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+@media (max-width: 600px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
+
+.form-team-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xs);
+  padding: 0.6rem;
+}
+
+.form-team-header {
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.form-match-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  padding: 0.15rem 0;
+}
+
+.res-tag {
+  font-weight: 800;
+  padding: 1px 4px;
+  border-radius: 2px;
+  font-size: 0.65rem;
+}
+
+.res-w { background: var(--primary-subtle); color: var(--primary); }
+.res-d { background: var(--yellow-subtle); color: var(--yellow); }
+.res-l { background: var(--red-subtle); color: var(--red); }
+
+/* Ayarlar Modal */
+.settings-content {
+  padding: 1.25rem;
+}
+
+.settings-content h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.settings-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.hint {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 0.3rem;
+}
+
+.settings-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+/* Loading & Empty State */
+.loading-state, .empty-state {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 0.75rem auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.text-emerald { color: var(--primary); }
+.text-yellow { color: var(--yellow); }
+.text-blue { color: var(--blue); }
+.text-muted { color: var(--text-muted); }
+.hidden { display: none !important; }
+
+/* ==========================================================================
+   MANTIKLI & OYNANABİLİR BAHİS ÖNERİLERİ (SMART BETS)
+   ========================================================================== */
+.smart-bets-section {
+  margin-top: 1.25rem;
+  padding: 1.1rem;
+  background: linear-gradient(180deg, rgba(18, 25, 36, 0.95) 0%, rgba(14, 20, 30, 0.98) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.smart-bets-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.smart-bets-header .section-subtitle {
+  margin-bottom: 0.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-primary);
+}
+
+.section-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.smart-bets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.85rem;
+}
+
+.smart-bet-card {
+  background: var(--bg-card-sub);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.smart-bet-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-light);
+}
+
+/* Category-specific top accent borders & subtle glow */
+.smart-bet-card.cat-banko {
+  border-top: 3px solid var(--primary);
+  background: linear-gradient(180deg, rgba(0, 195, 101, 0.06) 0%, var(--bg-card-sub) 100%);
+}
+
+.smart-bet-card.cat-value {
+  border-top: 3px solid var(--blue);
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.06) 0%, var(--bg-card-sub) 100%);
+}
+
+.smart-bet-card.cat-high {
+  border-top: 3px solid var(--yellow);
+  background: linear-gradient(180deg, rgba(245, 158, 11, 0.06) 0%, var(--bg-card-sub) 100%);
+}
+
+.smart-bet-card.cat-corner {
+  border-top: 3px solid var(--purple);
+  background: linear-gradient(180deg, rgba(139, 92, 246, 0.06) 0%, var(--bg-card-sub) 100%);
+}
+
+.smart-bet-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.rec-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.22rem 0.55rem;
+  border-radius: var(--radius-xs);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  letter-spacing: 0.3px;
+}
+
+.rec-badge-banko {
+  background: var(--primary-subtle);
+  color: var(--primary);
+  border: 1px solid rgba(0, 195, 101, 0.3);
+}
+
+.rec-badge-value {
+  background: var(--blue-subtle);
+  color: #60a5fa;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.rec-badge-high {
+  background: var(--yellow-subtle);
+  color: var(--yellow);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.rec-badge-corner {
+  background: rgba(139, 92, 246, 0.15);
+  color: #c084fc;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.smart-bet-confidence {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.confidence-val {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.smart-bet-main {
+  margin-bottom: 0.65rem;
+}
+
+.smart-bet-market {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  margin-bottom: 0.2rem;
+}
+
+.smart-bet-pick-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.smart-bet-pick {
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.smart-bet-odds {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+  background: #1a2332;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-xs);
+  white-space: nowrap;
+}
+
+.cat-banko .smart-bet-odds {
+  border-color: rgba(0, 195, 101, 0.35);
+  color: var(--primary);
+  background: rgba(0, 195, 101, 0.1);
+}
+
+.cat-value .smart-bet-odds {
+  border-color: rgba(59, 130, 246, 0.35);
+  color: #60a5fa;
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.cat-high .smart-bet-odds {
+  border-color: rgba(245, 158, 11, 0.4);
+  color: var(--yellow);
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.cat-corner .smart-bet-odds {
+  border-color: rgba(139, 92, 246, 0.35);
+  color: #c084fc;
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.smart-bet-reason {
+  font-size: 0.77rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: var(--radius-xs);
+  padding: 0.45rem 0.55rem;
+  border-left: 2px solid var(--border-light);
+  margin-top: auto;
+}
+
+.smart-bet-reason i {
+  margin-right: 0.3rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   GÜVENLİ ŞİFRELİ GİRİŞ EKRANI (AUTH OVERLAY)
+   ========================================================================== */
+.auth-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 11, 17, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.auth-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 410px;
+  background: linear-gradient(180deg, #151d2a 0%, #0e141e 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 195, 101, 0.08);
+  padding: 2.2rem 1.8rem;
+  text-align: center;
+  animation: authSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+@keyframes authSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.auth-logo-badge {
+  width: 58px;
+  height: 58px;
+  background: var(--primary-subtle);
+  border: 1px solid rgba(0, 195, 101, 0.35);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.9rem auto;
+  font-size: 1.6rem;
+  color: var(--primary);
+  box-shadow: 0 0 24px rgba(0, 195, 101, 0.25);
+}
+
+.auth-title {
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.auth-subtitle {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.85rem;
+}
+
+.auth-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: var(--yellow);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 1.6rem;
+}
+
+.auth-form {
+  text-align: left;
+}
+
+.auth-input-group {
+  margin-bottom: 1rem;
+}
+
+.auth-input-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.45rem;
+}
+
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.auth-input {
+  width: 100%;
+  background: #090e16;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+  font-size: 1.05rem;
+  padding: 0.85rem 2.8rem 0.85rem 1rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.auth-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 195, 101, 0.2);
+}
+
+.btn-toggle-pw {
+  position: absolute;
+  right: 0.6rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s;
+}
+
+.btn-toggle-pw:hover {
+  color: var(--text-primary);
+}
+
+.auth-remember-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
+}
+
+.remember-label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.remember-label input[type="checkbox"] {
+  accent-color: var(--primary);
+  width: 15px;
+  height: 15px;
+}
+
+.auth-error {
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.4);
+  color: #fda4af;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.btn-auth-submit {
+  width: 100%;
+  background: linear-gradient(135deg, #00c365 0%, #009e52 100%);
+  color: #0b1018;
+  font-weight: 800;
+  font-size: 0.98rem;
+  padding: 0.85rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 14px rgba(0, 195, 101, 0.35);
+  transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
+}
+
+.btn-auth-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 195, 101, 0.45);
+}
+
+.btn-auth-submit:active {
+  transform: translateY(1px);
+}
+
+.spinner-auth {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(11, 16, 24, 0.2);
+  border-top-color: #0b1018;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.auth-footer-hint {
+  text-align: center;
+  margin-top: 1.1rem;
+  color: var(--text-muted);
+  font-size: 0.74rem;
+}
+
+.btn-logout {
+  color: var(--text-muted);
+  transition: color 0.15s, background 0.15s;
+}
+
+.btn-logout:hover {
+  color: var(--red) !important;
+  background: var(--red-subtle) !important;
+}
+
+/* Mobil Cihazlar için Dokunmatik Optimizasyon */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 1.7rem 1.3rem;
+  }
+  .auth-title {
+    font-size: 1.3rem;
+  }
+  .auth-input {
+    font-size: 1rem;
+    padding: 0.8rem 2.6rem 0.8rem 0.9rem;
+  }
+  .btn-auth-submit {
+    padding: 0.9rem;
+    font-size: 1rem;
+  }
+}
+
+/* ==========================================================================
+   ALTERNATİF KUPON BUTONU & SEANS ŞERİDİ
+   ========================================================================== */
+.btn-alternative-coupon {
+  background: linear-gradient(135deg, #b45309 0%, #d97706 40%, #eab308 100%);
+  color: #0b0f19;
+  border: 1px solid rgba(254, 240, 138, 0.5);
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 800;
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 10px rgba(217, 119, 6, 0.4);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  white-space: nowrap;
+}
+
+.btn-alternative-coupon:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(234, 179, 8, 0.6);
+  background: linear-gradient(135deg, #d97706 0%, #eab308 50%, #fde047 100%);
+}
+
+.btn-alternative-coupon:active {
+  transform: scale(0.98);
+}
+
+.btn-alternative-coupon:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.badge-live-tag {
+  background: #ef4444;
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 900;
+  padding: 1px 5px;
+  border-radius: 999px;
+  letter-spacing: 0.4px;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.6);
+}
+
+.session-ribbon-alt {
+  background: linear-gradient(90deg, #581c87, #7e22ce);
+  color: #f3e8ff;
+}
+
+.badge-purple {
+  background: rgba(168, 85, 247, 0.18);
+  color: #d8b4fe;
+  border: 1px solid rgba(168, 85, 247, 0.45);
+}
+
+/* ==========================================================================
+   MOBİL ALT MENÜ (BOTTOM NAVIGATION) & TOUCH UI
+   ========================================================================== */
+.mobile-bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.4rem 0.5rem calc(0.4rem + env(safe-area-inset-bottom, 0px)) 0.5rem;
+  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.6);
+  justify-content: space-around;
+  align-items: center;
+}
+
+.mobile-nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: inherit;
+  padding: 0.35rem 0.2rem;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  max-width: 90px;
+}
+
+.mobile-nav-icon-wrap {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  margin-bottom: 2px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.mobile-nav-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  line-height: 1.1;
+  transition: color 0.2s ease;
+}
+
+.mobile-nav-item.active {
+  color: var(--primary);
+}
+
+.mobile-nav-item.active .mobile-nav-icon-wrap {
+  transform: translateY(-2px);
+  color: var(--primary);
+}
+
+.mobile-nav-item.active .mobile-nav-label {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.mobile-nav-badge {
+  position: absolute;
+  top: -5px;
+  right: -12px;
+  background: var(--primary);
+  color: #000;
+  font-size: 0.55rem;
+  font-weight: 900;
+  padding: 1px 4px;
+  border-radius: 999px;
+  line-height: 1.2;
+}
+
+.mobile-nav-badge-dot {
+  position: absolute;
+  top: 1px;
+  right: 0px;
+  width: 6px;
+  height: 6px;
+  background: var(--yellow);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--yellow);
+}
+
+.mobile-sheet-handle {
+  display: none;
+  width: 44px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  margin: 10px auto 4px auto;
+  cursor: grab;
+}
+
+@keyframes slideUpSheet {
+  from {
+    transform: translateY(100%);
+    opacity: 0.7;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Toast Bildirimleri */
+.toast-container {
+  position: fixed;
+  top: 1.2rem;
+  right: 1.2rem;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.toast {
+  background: #1e293b;
+  color: #fff;
+  border: 1px solid var(--border-color);
+  padding: 0.75rem 1.1rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  pointer-events: auto;
+  animation: toastIn 0.25s ease-out forwards;
+  max-width: 420px;
+}
+
+.toast.toast-success {
+  border-color: var(--primary);
+  background: #064e3b;
+  color: #a7f3d0;
+}
+
+.toast.toast-error {
+  border-color: var(--red);
+  background: #881337;
+  color: #fecdd3;
+}
+
+@keyframes toastIn {
+  from { transform: translateY(-12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes toastOut {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-12px); opacity: 0; }
+}
+
+/* ==========================================================================
+   MOBİL CİHAZLAR İÇİN KAPSAMLI UYARLAMA (MAX-WIDTH: 768PX)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: flex;
+  }
+
+  .main-container {
+    padding-bottom: calc(75px + env(safe-area-inset-bottom, 0px)) !important;
+    padding-left: 0.65rem;
+    padding-right: 0.65rem;
+    margin: 0.5rem auto;
+  }
+
+  .tab-bar-container {
+    display: none;
+  }
+
+  .nav-container {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .brand-sub {
+    display: none;
+  }
+
+  .live-status-pill .live-text {
+    display: none;
+  }
+
+  .live-status-pill {
+    padding: 0.35rem;
+    border-radius: 50%;
+  }
+
+  /* Kupon araç çubuğu ve butonları */
+  .coupon-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+    padding: 0.75rem;
+  }
+
+  .coupon-date-selector {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .coupon-quick-day-selector {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .day-toggle-btn {
+    justify-content: center;
+    padding: 0.55rem;
+    font-size: 0.82rem;
+  }
+
+  #couponDateSelect {
+    max-width: 100% !important;
+    width: 100%;
+  }
+
+  .btn-alternative-coupon {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.92rem;
+  }
+
+  .coupon-session-selector {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.3rem;
+  }
+
+  .session-tab-btn {
+    padding: 0.55rem 0.25rem;
+    font-size: 0.72rem;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+  }
+
+  .coupon-type-pills {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.3rem;
+  }
+
+  .coupon-type-btn {
+    padding: 0.55rem 0.25rem;
+    font-size: 0.72rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+  }
+
+  .stats-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .stats-banner-card {
+    padding: 0.85rem;
+  }
+
+  /* Bottom sheet modal mobilde */
+  .modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal-card {
+    border-radius: 20px 20px 0 0;
+    max-height: 92vh;
+    width: 100%;
+    max-width: 100%;
+    animation: slideUpSheet 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-sheet-handle {
+    display: block;
+  }
+
+  /* Maç satırı mobil dokunmatik iyileştirmesi */
+  .mackolik-row {
+    padding: 0.65rem 0.55rem;
+    gap: 0.4rem;
+  }
+
+  .row-left-main {
+    gap: 0.4rem;
+  }
+
+  .row-status-col {
+    flex: 0 0 46px;
+    padding-right: 0.35rem;
+  }
+
+  .row-team {
+    font-size: 0.82rem;
+  }
+
+  .row-crest {
+    width: 20px;
+    height: 20px;
+  }
+
+  .row-score-col {
+    flex: 0 0 54px;
+    font-size: 0.95rem;
+    padding: 0.15rem 0.25rem;
+  }
+
+  .row-btn-group {
+    display: none;
+  }
+
+  /* Kupon Fişi Mobilde */
+  .slip-footer {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+
+  .slip-footer-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .btn-bilyoner-action, .btn-copy-slip {
+    width: 100%;
+    justify-content: center;
+    padding: 0.75rem;
+  }
+
+  /* Toast mobilde alt çubuğun hemen üzerinde */
+  .toast-container {
+    top: auto;
+    bottom: calc(75px + env(safe-area-inset-bottom, 0px));
+    left: 1rem;
+    right: 1rem;
+    align-items: center;
+  }
+}
+
+
