@@ -38,16 +38,14 @@ Bu platformu bilgisayarınız kapalıyken bile 7/24 internette çalışan ve her
 ---
 
 ## 🔒 Şifreli Giriş & Güvenlik
-- **Varsayılan Giriş Şifresi:** `1234`
 - Telefondan veya bilgisayardan ilk kez girdiğinizde şifre ekranı açılır.
 - **"Beni Hatırla"** seçeneği sayesinde aynı cihazda bir daha şifre girmek zorunda kalmazsınız.
-- Şifrenizi dilediğiniz zaman sağ üstteki **Ayarlar (Dişli çark)** simgesinden değiştirebilirsiniz.
+- Şifreli güvenli erişim sayesinde yalnızca yetkili kullanıcılar platforma erişebilir.
 
 ---
 
 ## 📱 Evde / Aynı Wi-Fi'de Telefondan Anında Bağlanma
 Bilgisayarınızda `baslat.bat` çalışırken:
 1. Telefonunuzun aynı Wi-Fi ağına bağlı olduğundan emin olun.
-2. Telefon tarayıcınızdan (Safari veya Chrome) şu adresi açın:
-   **`http://192.168.1.106:8000`**
-3. Şifre kutusuna **`1234`** yazıp **"Giriş Yap"** butonuna dokunun!
+2. Telefon tarayıcınızdan yerel ağ adresini açın.
+3. Şifrenizi girip **"Giriş Yap"** butonuna dokunun!

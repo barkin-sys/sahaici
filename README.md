@@ -1,6 +1,6 @@
 # ⚽ SAHA İÇİ - Canlı Reel Maç Takip, Derin Analiz & AI Futbol Arkadaşı
 
-Bu platform; tamamen **gerçek (reel) canlı, oynanacak ve oynanmış futbol maçlarını** takip eden, takımların güncel formunu, aralarındaki maçları (H2H), puan durumunu ve bahis oranlarını analiz ederek sanki **yıllardır tribünde ve taktik tahtası başında olan bilgili bir futbol arkadaşı (Taktik Serdar)** gibi konuşan, tahminler ve olasılıklar sunan yeni nesil bir web uygulamasıdır.
+Bu platform; tamamen **gerçek (reel) canlı, oynanacak ve oynanmış futbol maçlarını** takip eden, takımların güncel formunu, aralarındaki maçları (H2H), puan durumunu ve bahis oranlarını analiz ederek sanki **yıllardır tribünde ve taktik tahtası başında olan bilgili bir futbol arkadaşı (Taktik Berat)** gibi konuşan, tahminler ve olasılıklar sunan yeni nesil bir web uygulamasıdır.
 
 ---
 
@@ -20,11 +20,11 @@ Bu platform; tamamen **gerçek (reel) canlı, oynanacak ve oynanmış futbol ma�
   - 🌍 **Tüm Dünya Maçları** (Her gün yüzlerce canlı maç!)
 - **Gelişmiş Tarih Gezgini:** Dünün biten maçları, bugünün canlı/oynanacak maçları, yarın ve takvimden seçtiğiniz herhangi bir gün!
 
-### 2. 🎙️ "Bilgili Futbol Arkadaşın Taktik Serdar"
+### 2. 🎙️ "Bilgili Futbol Arkadaşın Taktik Berat"
 - Kuru ve yapay zeka klişelerinden uzak; samimi, cesur, futbol mantığına ve jargona hakim bir üslup.
 - **Özel Analiz Mektubu:** Her maç için ev sahibi presi, deplasman kontra tehdidi, gol beklentisi, en sıcak skor ve net "Dost Meclisi Tavsiyesi".
 - **İnteraktif Sohbet (AI Chat):**
-  - İstediğin maçı seçip Serdar'a doğrudan sorabilirsin:
+  - İstediğin maçı seçip Berat'a doğrudan sorabilirsin:
     - *"Bu maçta 2.5 üst patlar mı?"*
     - *"Sürpriz kokusu var mı?"*
     - *"Kupona banko ne yazarsın?"*
@@ -80,7 +80,7 @@ http://localhost:8000
 
 ## 📁 Proje Dosya Yapısı
 - `server.py`: FastAPI web sunucusu ve REST API uç noktaları.
-- `football_engine.py`: ESPN API veri çekici, Poisson matematik modeli ve Taktik Serdar yorum motoru.
+- `football_engine.py`: ESPN API veri çekici, Poisson matematik modeli ve Taktik Berat yorum motoru.
 - `static/index.html`: Modern, duyarlı ve stadyum atmosferli ön yüz arayüzü.
 - `static/style.css`: Karanlık tema (Dark mode) spor analitiği CSS stilleri.
 - `static/app.js`: Gerçek zamanlı arayüz yönetimi, modal, filtreler ve sohbet mantığı.

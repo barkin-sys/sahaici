@@ -276,7 +276,7 @@ def analyze_match_endpoint(req: AnalyzeRequest, _token: str = Depends(require_au
 @app.post("/api/chat")
 def chat_with_pal_endpoint(req: ChatRequest, _token: str = Depends(require_auth)):
     """
-    Futbol arkadaşı Taktik Serdar ile interaktif sohbet.
+    Futbol arkadaşı Taktik Berat ile interaktif sohbet.
     """
     match_info = req.match_data
     detail = None

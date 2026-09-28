@@ -1621,7 +1621,7 @@ def calculate_inplay_probabilities(match_info: dict, detail: dict, pre_probs: di
     else:
         inplay_pick = corner_pick
 
-    # Taktik Serdar'ın Canlı Maç İçi Yorumu
+    # Taktik Berat'ın Canlı Maç İçi Yorumu
     live_commentary = (
         f"🔥 **CANLI OYUN DEĞERLENDİRMESİ (Dakika {elapsed_min}')**\n\n"
         f"Dostum maç şu an canlı yayında ve nefes kesiyor! Tabelada **{home_name} {h_score} - {a_score} {away_name}** var.\n\n"
@@ -1693,7 +1693,7 @@ def calculate_inplay_probabilities(match_info: dict, detail: dict, pre_probs: di
 def generate_expert_friend_commentary(match_info: dict, detail: dict, probs: dict) -> str:
     """
     Sanki yıllardır tribünde, halı sahada ve taktik tahtası başında olan,
-    futbolu ciğerine kadar bilen samimi ve bilgili bir arkadaşın (Taktik Serdar)
+    futbolu ciğerine kadar bilen samimi ve bilgili bir arkadaşın (Taktik Berat)
     maça özel derin taktik ve bahis analiz mektubu.
     Robotik dilden tamamen uzak, akıcı, gerçekçi, takımlara ve verilere birebir odaklı.
     """
@@ -1819,7 +1819,7 @@ def generate_expert_friend_commentary(match_info: dict, detail: dict, probs: dic
 
     # Bilyoner Odaklı Bahis Stratejisi
     betting_guide = (
-        f"💡 **Taktik Serdar'ın Kupon Reçetesi (Bilyoner / İddaa Baremleriyle):**\n"
+        f"💡 **Taktik Berat'ın Kupon Reçetesi (Bilyoner / İddaa Baremleriyle):**\n"
         f"👉 **Ana Tercihim (Dost Meclisi Tüyosu):** **{pick}** (Bilyoner oran bareminde en yüksek değer bu tercihte).\n"
         f"👉 **Kasa Katlama / Banko Alternatifi:** **1.5 Gol Üstü** veya **Çifte Şans 1X** (%{max(hw+dr, o15):.0f} matematiksel güven endeksi).\n"
         f"👉 **Sürpriz Arayanlara:** Maçta kanat akınları yoğun olacağından **Toplam Korner 8.5 Üstü** seçeneği bültende çok lezzetli duruyor."
@@ -1834,7 +1834,7 @@ def generate_expert_friend_commentary(match_info: dict, detail: dict, probs: dic
 def ask_football_pal(query: str, match_info: dict, detail: dict, probs: dict, history: list = None, api_key: str = None) -> str:
     """
     Kullanıcının seçili maç veya futbol hakkında sorduğu her soruya,
-    bilgili futbol arkadaşı (Taktik Serdar) samimiyetiyle, maça ve gerçek verilere
+    bilgili futbol arkadaşı (Taktik Berat) samimiyetiyle, maça ve gerçek verilere
     birebir odaklanarak yanıt üretir.
 
     Öncelik: Gemini AI → Akıllı Yerel Motor (gerçek veriye dayalı)
@@ -1961,7 +1961,7 @@ def _call_gemini_chat(query: str, context: str, history: list, api_key: str) -> 
     Tüm maç verileri bağlam olarak verilir, önceki sohbet geçmişi korunur.
     """
     system_instruction = (
-        "Sen 'Taktik Serdar' — futbolu tüm detaylarıyla bilen, yıllardır maçları izleyen, taktik tahtasına hakim, "
+        "Sen 'Taktik Berat' — futbolu tüm detaylarıyla bilen, yıllardır maçları izleyen, taktik tahtasına hakim, "
         "istatistikleri kusursuz yorumlayan SAMİMİ, BİLGİLİ BİR TÜRK FUTBOL ARKADAŞISIN.\n\n"
         "KRİTİK KURALLAR:\n"
         "1. Kullanıcı senin en yakın futbol arkadaşın. 'Bir yapay zeka olarak...' gibi ifadeler ASLA kullanma.\n"
